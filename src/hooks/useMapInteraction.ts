@@ -1,25 +1,24 @@
 import { useState, useCallback } from 'react';
-import type { CulinaryRegion } from '../types';
-import { getRegionById } from '../utils/mapHelpers';
+import type { CountryCuisine } from '../types';
+import { getCountryCuisine } from '../utils/mapHelpers';
 
 interface HoveredInfo {
-  region: CulinaryRegion;
+  name: string;
   x: number;
   y: number;
 }
 
 export function useMapInteraction() {
-  const [selectedRegion, setSelectedRegion] = useState<CulinaryRegion | null>(null);
+  const [selectedCountry, setSelectedCountry] = useState<CountryCuisine | null>(null);
   const [hoveredInfo, setHoveredInfo] = useState<HoveredInfo | null>(null);
 
-  const handleClick = useCallback((regionId: string) => {
-    const region = getRegionById(regionId);
-    if (region) setSelectedRegion(region);
+  const handleClick = useCallback((countryId: string) => {
+    const country = getCountryCuisine(countryId);
+    if (country) setSelectedCountry(country);
   }, []);
 
-  const handleHover = useCallback((regionId: string, x: number, y: number) => {
-    const region = getRegionById(regionId);
-    if (region) setHoveredInfo({ region, x, y });
+  const handleHover = useCallback((name: string, x: number, y: number) => {
+    setHoveredInfo({ name, x, y });
   }, []);
 
   const handleLeave = useCallback(() => {
@@ -27,11 +26,11 @@ export function useMapInteraction() {
   }, []);
 
   const closeModal = useCallback(() => {
-    setSelectedRegion(null);
+    setSelectedCountry(null);
   }, []);
 
   return {
-    selectedRegion,
+    selectedCountry,
     hoveredInfo,
     handleClick,
     handleHover,

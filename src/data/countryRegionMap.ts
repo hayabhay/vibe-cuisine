@@ -1,8 +1,6 @@
-import type { CountryRegionMapping } from '../types';
-
 // Maps ISO 3166-1 numeric country codes to culinary region IDs
 // These codes match the `id` field in world-atlas countries-110m.json
-export const countryRegionMap: CountryRegionMapping = {
+export const countryRegionMap: Record<string, string> = {
   // East Asia
   '156': 'east-asia', // China
   '392': 'east-asia', // Japan
@@ -184,9 +182,7 @@ export const countryRegionMap: CountryRegionMapping = {
   // North America
   '840': 'north-america', // United States
   '124': 'north-america', // Canada
-
-  // Oceania — mapped to nearest reasonable region or left unmapped
-  '036': 'north-america', // Australia (western-influenced cuisine)
-  '554': 'north-america', // New Zealand (western-influenced cuisine)
+  '036': 'north-america', // Australia
+  '554': 'north-america', // New Zealand
   '598': 'southeast-asia', // Papua New Guinea
 };

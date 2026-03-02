@@ -1,18 +1,25 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import type { CulinaryRegion } from '../types';
+import { X } from 'lucide-react';
+import type { CountryCuisine } from '../types';
+import { getRegionColor } from '../utils/mapHelpers';
 import PhotoGallery from './PhotoGallery';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Separator } from '@/components/ui/separator';
 
 interface RegionModalProps {
-  region: CulinaryRegion;
+  country: CountryCuisine;
   onClose: () => void;
 }
 
-export default function RegionModal({ region, onClose }: RegionModalProps) {
+export default function RegionModal({ country, onClose }: RegionModalProps) {
+  const accentColor = getRegionColor(country.id);
+
   useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose();
-    }
+    const handleKeyDown = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
@@ -25,84 +32,100 @@ export default function RegionModal({ region, onClose }: RegionModalProps) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-foreground/30 backdrop-blur-sm"
         onClick={onClose}
       />
 
-      {/* Modal card */}
+      {/* Modal */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        initial={{ opacity: 0, scale: 0.97, y: 16 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        transition={{ duration: 0.25, ease: 'easeOut' }}
-        className="relative z-50 w-full max-w-2xl max-h-[85vh] overflow-y-auto modal-scroll bg-surface-800 rounded-2xl shadow-2xl"
+        exit={{ opacity: 0, scale: 0.97, y: 16 }}
+        transition={{ duration: 0.2, ease: 'easeOut' }}
+        className="relative z-50 w-full max-w-4xl 2xl:max-w-5xl"
       >
-        {/* Accent bar */}
-        <div className="h-1.5 rounded-t-2xl" style={{ backgroundColor: region.color }} />
+        <Card className="border-border shadow-2xl">
+          {/* Accent bar */}
+          <div className="h-1 rounded-t-lg" style={{ backgroundColor: accentColor }} />
 
-        <div className="p-6 space-y-6">
           {/* Header */}
-          <div className="flex items-start justify-between">
-            <h2 className="text-2xl font-bold text-white">{region.name}</h2>
-            <button
-              onClick={onClose}
-              className="p-1 rounded-lg hover:bg-surface-700 transition-colors text-gray-400 hover:text-white"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+          <div className="relative flex items-center justify-center px-6 pt-5 pb-4">
+            <h2 className="font-mono text-2xl lg:text-3xl 2xl:text-4xl font-bold text-foreground">{country.name}</h2>
+            <Button variant="ghost" size="icon" onClick={onClose} className="absolute right-5 [&_svg]:size-auto text-muted-foreground hover:text-foreground">
+              <X className="w-6 h-6 2xl:w-7 2xl:h-7" />
+            </Button>
+            <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(to right, transparent, hsl(var(--border)) 25%, hsl(var(--border)) 75%, transparent)' }} />
           </div>
 
-          {/* Description */}
-          <p className="text-gray-300 leading-relaxed">{region.description}</p>
+          <ScrollArea className="max-h-[80vh]">
+            <CardContent className="px-6 pt-5 pb-6 space-y-5">
+              {/* Description */}
+              <p className="text-base lg:text-lg 2xl:text-xl text-muted-foreground leading-relaxed">{country.description}</p>
 
-          {/* Key Ingredients */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Key Ingredients</h3>
-            <div className="flex flex-wrap gap-2">
-              {region.keyIngredients.map((ingredient) => (
-                <span
-                  key={ingredient}
-                  className="px-3 py-1 rounded-full text-sm border"
-                  style={{ borderColor: region.color + '60', color: region.color }}
-                >
-                  {ingredient}
-                </span>
-              ))}
-            </div>
-          </div>
+              <Separator />
 
-          {/* Signature Dishes */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Signature Dishes</h3>
-            <div className="space-y-3">
-              {region.signatureDishes.map((dish) => (
-                <div key={dish.name} className="bg-surface-900/50 rounded-xl p-4">
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="font-semibold text-white">{dish.name}</span>
-                    <span className="text-xs text-gray-500">{dish.country}</span>
-                  </div>
-                  <p className="text-sm text-gray-400">{dish.description}</p>
+
+              {/* Key Ingredients */}
+              <div>
+                <p className="font-mono text-xs 2xl:text-sm font-bold text-muted-foreground uppercase tracking-widest mb-3">
+                  Key Ingredients
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {country.keyIngredients.map((ingredient) => (
+                    <Badge
+                      key={ingredient}
+                      variant="outline"
+                      className="font-mono text-sm 2xl:text-base rounded-sm px-2.5 py-0.5"
+                      style={{ borderColor: accentColor + '70', color: accentColor }}
+                    >
+                      {ingredient}
+                    </Badge>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
 
-          {/* Photo Gallery */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Gallery</h3>
-            <PhotoGallery images={region.images} />
-          </div>
+              <Separator />
 
-          {/* Fun Fact */}
-          <div className="rounded-xl p-4 border" style={{ borderColor: region.color + '40', backgroundColor: region.color + '10' }}>
-            <p className="text-sm">
-              <span className="font-semibold text-white">Fun fact: </span>
-              <span className="text-gray-300">{region.funFact}</span>
-            </p>
-          </div>
-        </div>
+              {/* Gallery */}
+              {country.images.length > 0 && (
+                <>
+                  <PhotoGallery images={country.images} />
+                  <Separator />
+                </>
+              )}
+
+              {/* Signature Dishes */}
+              <div>
+                <p className="font-mono text-xs 2xl:text-sm font-bold text-muted-foreground uppercase tracking-widest mb-3">
+                  Signature Dishes
+                </p>
+                <div className="space-y-2">
+                  {country.signatureDishes.map((dish) => (
+                    <Card key={dish.name} className="border-border bg-muted/40">
+                      <CardContent className="px-4 py-3">
+                        <p className="font-mono font-bold text-base lg:text-lg 2xl:text-xl text-foreground mb-1">{dish.name}</p>
+                        <p className="text-sm lg:text-base 2xl:text-lg text-muted-foreground leading-relaxed">{dish.description}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+
+              <Separator />
+
+              {/* Fun Fact */}
+              <div
+                className="rounded-md px-4 py-3 border text-sm"
+                style={{ borderColor: accentColor + '50', backgroundColor: accentColor + '0D' }}
+              >
+                <span className="font-mono font-bold text-xs 2xl:text-sm uppercase tracking-widest" style={{ color: accentColor }}>
+                  // fun fact{' '}
+                </span>
+                <span className="text-sm 2xl:text-base text-muted-foreground">{country.funFact}</span>
+              </div>
+            </CardContent>
+          </ScrollArea>
+        </Card>
       </motion.div>
     </div>
   );
