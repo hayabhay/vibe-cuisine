@@ -1693,7 +1693,28 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Rice and Peas', description: 'Coconut rice cooked with kidney beans, thyme, and allspice — on every Jamaican Sunday table without exception.' },
       { name: 'Curry Goat', description: 'Bone-in goat slow-braised in a rich Scotch bonnet and curry paste — one of Jamaica\'s great celebratory dishes.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1677042929485-f535f3df23ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxKYW1haWNhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDd8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a restaurant with a large neon sign on the wall' },
+      { url: 'https://images.unsplash.com/photo-1644781573939-5f5e1170167a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyfHxKYW1haWNhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDd8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a neon sign with a palm tree on it' },
+      { url: 'https://images.unsplash.com/photo-1631152577772-8cf5ed5a4b28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwzfHxKYW1haWNhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDd8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'person in gray long sleeve shirt sitting on chair' },
+      { url: 'https://images.unsplash.com/photo-1588299925499-033217ee2823?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw0fHxKYW1haWNhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDd8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'man in black shorts jumping on water during daytime' },
+      { url: 'https://images.unsplash.com/photo-1632859509881-f557437f5d33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw1fHxKYW1haWNhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDd8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a white plate topped with slices of cake next to a glass of juice' },
+      { url: 'https://images.unsplash.com/photo-1605994543054-6ffbabbd8139?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw2fHxKYW1haWNhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDd8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'man in black shirt riding bicycle near palm tree during daytime' },
+      { url: 'https://images.unsplash.com/photo-1726853725551-83b9f9a1329d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw3fHxKYW1haWNhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDd8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'A piece of bread sitting on top of a brown paper bag' },
+      { url: 'https://images.unsplash.com/photo-1515757026668-f01a7685f66e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw4fHxKYW1haWNhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDd8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'brown pot with green plant' },
+      { url: 'https://images.unsplash.com/photo-1632851613759-4d4029c4a43b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw5fHxKYW1haWNhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDd8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a sandwich and chips on a newspaper with a glass of beer' },
+      { url: 'https://images.unsplash.com/photo-1634075281468-6980d76be8f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxMHx8SmFtYWljYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a green apple with a yellow eye sitting on a white surface' },
+      { url: 'https://images.unsplash.com/photo-1614706250649-b5ccfc837688?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxMXx8SmFtYWljYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'person in white dress shirt holding white ceramic bowl with food' },
+      { url: 'https://images.unsplash.com/photo-1619151578119-b2f65ec6ebd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxMnx8SmFtYWljYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'white ceramic plate with food' },
+      { url: 'https://images.unsplash.com/photo-1632851613498-9c03c9ce1ef3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxM3x8SmFtYWljYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a cupcake with a single candle sitting on top of it' },
+      { url: 'https://images.unsplash.com/photo-1741650824813-842d6b39c5ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxNHx8SmFtYWljYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Rice and beans in a takeout container.' },
+      { url: 'https://images.unsplash.com/photo-1632859965308-d15227508c4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxNXx8SmFtYWljYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a blue plate topped with food next to a cup of coffee' },
+      { url: 'https://images.unsplash.com/photo-1553806527-23657e939f76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxNnx8SmFtYWljYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'avocado fruit' },
+      { url: 'https://images.unsplash.com/photo-1615312090960-3202f375020b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxN3x8SmFtYWljYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'burger and fries on brown wooden tray' },
+      { url: 'https://images.unsplash.com/photo-1709997460782-20dbad50ff53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxOHx8SmFtYWljYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a box of easter bun sitting on top of a counter' },
+      { url: 'https://images.unsplash.com/photo-1709747535095-9365ace728ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxOXx8SmFtYWljYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a plate with a piece of bread on it next to a box of cereal' },
+      { url: 'https://images.unsplash.com/photo-1595220524884-95d1df1857a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyMHx8SmFtYWljYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA3fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'man in white t-shirt and red pants holding green umbrella during daytime' }
+    ],
     funFact: 'Jerk cooking was invented by the Maroons — African slaves who escaped into Jamaica\'s Blue Mountains in the 17th century — as a way to preserve and cook wild boar without making smoke visible to colonial soldiers.',
   },
 
@@ -4419,7 +4440,32 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Jocon', description: 'Chicken in a vibrant green sauce of tomatillos, cilantro, and green chiles — a pre-Columbian Maya recipe still made in its ancient form in highland villages.' },
       { name: 'Kak\'ik', description: 'Turkey soup of deep red color from guaque chiles and achiote, with coriander and herbs — the most ceremonially important dish in Guatemalan Q\'eqchi\' Maya culture.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1567007990089-a5b0e716074f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxHdWF0ZW1hbGElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5NHww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a close up of a bowl of cereal with raspberries' },
+      { url: 'https://images.unsplash.com/photo-1666705200490-2e3e616ae55a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyfHxHdWF0ZW1hbGElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5NHww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a group of people standing around a small red truck' },
+      { url: 'https://images.unsplash.com/photo-1517243985121-d6ae97460078?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwzfHxHdWF0ZW1hbGElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5NHww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'bunch of fruit display on basket' },
+      { url: 'https://images.unsplash.com/photo-1756331601238-7dc6d5dacd8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw0fHxHdWF0ZW1hbGElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5NHww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Restaurant window with "social club" logo and japanese text.' },
+      { url: 'https://images.unsplash.com/photo-1605887917276-48197c63029f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw1fHxHdWF0ZW1hbGElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5NHww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'man in black jacket walking on sidewalk during daytime' },
+      { url: 'https://images.unsplash.com/photo-1571770110109-46c4d1cfcd21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw2fHxHdWF0ZW1hbGElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5NXww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'avocado with cheese' },
+      { url: 'https://images.unsplash.com/photo-1611251102375-e10068764ad3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw3fHxHdWF0ZW1hbGElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5NXww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'black coffee press beside clear glass jar' },
+      { url: 'https://images.unsplash.com/photo-1571072965045-709ce64f0812?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw4fHxHdWF0ZW1hbGElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5NXww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'six mufffins' },
+      { url: 'https://images.unsplash.com/photo-1629583141681-44593c79f170?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw5fHxHdWF0ZW1hbGElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5NXww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'brown bread on white table' },
+      { url: 'https://images.unsplash.com/photo-1597119420175-7439edd9da6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxMHx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'black ceramic mug with brown liquid' },
+      { url: 'https://images.unsplash.com/photo-1515443961218-a51367888e4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxMXx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'shrimp dish with slice of lemon' },
+      { url: 'https://images.unsplash.com/photo-1590884984926-e23e4cf95dd2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxMnx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'boy in red shirt sitting on green chair' },
+      { url: 'https://images.unsplash.com/photo-1745127190985-a902a6bdef47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxM3x8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Many fresh and ripe mangoes are on display.' },
+      { url: 'https://images.unsplash.com/photo-1652594271868-1694f033808b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxNHx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a man standing at a bar in a restaurant' },
+      { url: 'https://images.unsplash.com/photo-1609366162814-0f18ac1b6b01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxNXx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'purple and pink round pendant lamps' },
+      { url: 'https://images.unsplash.com/photo-1767893813372-757457c91511?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxNnx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Pile of coconuts with rough, textured husks' },
+      { url: 'https://images.unsplash.com/photo-1766791620623-fab070962a90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxN3x8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Bowls of assorted dried beans and grains.' },
+      { url: 'https://images.unsplash.com/photo-1582768772255-7fb8066357ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxOHx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'person pouring water on white ceramic mug' },
+      { url: 'https://images.unsplash.com/photo-1761064544048-76641fcb11ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxOXx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Waffles with fruit, cream, and coffee on a table' },
+      { url: 'https://images.unsplash.com/photo-1765337071949-911b652a7290?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyMHx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Misty mountain landscape with cultivated terraces and forested slopes.' },
+      { url: 'https://images.unsplash.com/photo-1638043139484-1534e2c14bcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyMXx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a bowl of soup with a spoon in it' },
+      { url: 'https://images.unsplash.com/photo-1637796527523-7e1a8c11eb04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyMnx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a woman carrying a basket of oranges on her head' },
+      { url: 'https://images.unsplash.com/photo-1582734623529-6a599c37d2ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyM3x8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'brown and black round bowl on blue plastic tray' },
+      { url: 'https://images.unsplash.com/photo-1638042185138-da2518671f1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyNHx8R3VhdGVtYWxhJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a bunch of items that are on a sidewalk' }
+    ],
     funFact: 'Chocolate was invented by the ancient Maya of Guatemala and southern Mexico — cacao was so valuable it served as currency. The word "chocolate" comes from the Mayan "xocolatl." Guatemala is now home to single-origin specialty chocolate producers whose cacao is prized by the world\'s finest chocolatiers.',
   },
 
@@ -4432,7 +4478,14 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Sopa de Caracol', description: 'Creamy conch soup with coconut milk and plantains — Honduras\'s Caribbean coast signature dish and one of Central America\'s finest seafood preparations.' },
       { name: 'Plato Típico', description: 'The standard Honduran meal — beef, rice, beans, plantains, salad, and cream on one plate — the benchmark meal at comedores across the country.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1669873932918-eb3343a292cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxIb25kdXJhcyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk2fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'text' },
+      { url: 'https://images.unsplash.com/photo-1669873916653-3a7df7abb318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyfHxIb25kdXJhcyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk2fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a knife and a cutting board with fruit on it' },
+      { url: 'https://images.unsplash.com/photo-1760942308336-acb4805d6e81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwzfHxIb25kdXJhcyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk2fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Colorful cotton candy stacked on a pole outdoors.' },
+      { url: 'https://images.unsplash.com/photo-1599475143531-695b4f4b5fa8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw0fHxIb25kdXJhcyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk2fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'coca cola bottle on brown wooden table' },
+      { url: 'https://images.unsplash.com/photo-1763160870899-8f6d59c921ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw1fHxIb25kdXJhcyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk2fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Coffee cherries growing on a branch' },
+      { url: 'https://images.unsplash.com/photo-1760942462788-86d4adca12d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw2fHxIb25kdXJhcyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk2fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Two cups of dessert with fruit and strawberries' }
+    ],
     funFact: 'Honduras gave the world the term "banana republic" — the United Fruit Company\'s control of Honduran banana plantations (1899–1970s) was so total it effectively ran the government. Honduran banana workers\' rights struggles inspired labor movements across Latin America.',
   },
 
@@ -4445,7 +4498,10 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Sopa de Pata', description: 'A rich stew of cow\'s feet and tripe with corn, plantains, and chile — El Salvador\'s ultimate comfort soup, eaten especially for Sundays and hangovers.' },
       { name: 'Yuca Frita', description: 'Fried cassava served with curtido and chicharrón — El Salvador\'s most beloved street snack, tangy, crispy, and satisfying.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1664930726079-0acaa64d65a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxFbCUyMFNhbHZhZG9yJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTd8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a group of cans with labels' },
+      { url: 'https://images.unsplash.com/photo-1752367798938-f1fac36c6d4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyfHxFbCUyMFNhbHZhZG9yJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTgzOTd8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'A plate of food with fish, rice, and salad.' }
+    ],
     funFact: 'El Salvador\'s pupusa is protected by national law — it is officially recognized as El Salvador\'s national dish by the Legislative Assembly, and November 13 was declared National Pupusa Day in 2005. An estimated 250 million pupusas are eaten in El Salvador each year.',
   },
 
@@ -4458,7 +4514,11 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Vigorón', description: 'Boiled yuca topped with chicharrón and a tangy cabbage salad (ensalada) dressed with vinegar and chile — Granada\'s most famous street food, served on banana leaves.' },
       { name: 'Nacatamal', description: 'A large corn masa tamale stuffed with pork, potatoes, olives, raisins, and rice, wrapped in plantain leaves and boiled for hours — Nicaragua\'s most elaborate traditional dish.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1529209061666-6ca917f6f5e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxOaWNhcmFndWElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5N3ww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'slice of yellow citrus fruits' },
+      { url: 'https://images.unsplash.com/photo-1649960861741-38f530ffb7f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyfHxOaWNhcmFndWElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5N3ww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a man in a white shirt eating a green apple' },
+      { url: 'https://images.unsplash.com/photo-1649960861738-1f471a2f7bdb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwzfHxOaWNhcmFndWElMjBmb29kfGVufDB8fHx8MTc3MjQxODM5N3ww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a person holding a peeled orange in their hand' }
+    ],
     funFact: 'Lake Nicaragua contains the world\'s only freshwater sharks — bull sharks (Carcharhinus leucas) that adapted to freshwater after the lake was cut off from the Pacific Ocean millennia ago. Lake shark was once a regular part of Nicaraguan diet near the lake, though overfishing has now made them rare.',
   },
 
@@ -4471,7 +4531,17 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Mangu', description: 'Green plantains boiled and mashed with butter and onion until smooth — the definitive Dominican breakfast, always served with fried cheese, salami, and eggs.' },
       { name: 'Sancocho', description: 'A seven-meat stew with root vegetables and herbs — the Dominican Republic\'s festive soup, made for celebrations, rain, and national holidays.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1666181811290-980cdcc689e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxEb21pbmljYW4lMjBSZXB1YmxpYyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk4fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a table with food and a mug' },
+      { url: 'https://images.unsplash.com/photo-1665331745878-9524fbec8729?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyfHxEb21pbmljYW4lMjBSZXB1YmxpYyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk4fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a bowl of food' },
+      { url: 'https://images.unsplash.com/photo-1665556752772-b7e5a55f6916?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwzfHxEb21pbmljYW4lMjBSZXB1YmxpYyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk4fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a wooden heart shaped object' },
+      { url: 'https://images.unsplash.com/photo-1575950674322-3a1977724f2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw0fHxEb21pbmljYW4lMjBSZXB1YmxpYyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk4fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'grilled fishes and fried rice' },
+      { url: 'https://images.unsplash.com/photo-1693761935312-93379b549e59?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw1fHxEb21pbmljYW4lMjBSZXB1YmxpYyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk4fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a table topped with plates of food and utensils' },
+      { url: 'https://images.unsplash.com/photo-1693761935125-ed027b6986ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw2fHxEb21pbmljYW4lMjBSZXB1YmxpYyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk4fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a plate with an orange fish on it' },
+      { url: 'https://images.unsplash.com/photo-1722699624253-05111c9ff3a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw3fHxEb21pbmljYW4lMjBSZXB1YmxpYyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk4fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'A person holding a pineapple in their hand' },
+      { url: 'https://images.unsplash.com/photo-1720210216976-22defee7894e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw4fHxEb21pbmljYW4lMjBSZXB1YmxpYyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk4fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'A white plate topped with a sandwich covered in sauce' },
+      { url: 'https://images.unsplash.com/photo-1730376319010-4ce5b8b2e385?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw5fHxEb21pbmljYW4lMjBSZXB1YmxpYyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4Mzk4fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'A group of people unloading a large box on the back of a truck' }
+    ],
     funFact: 'The Dominican Republic is the world\'s largest producer of organic cocoa and has one of the highest per-capita chocolate consumption rates in the Caribbean. Dominican cacao (primarily the rare Hispaniola variety) is prized by single-origin chocolate makers across Europe.',
   },
 
@@ -4484,7 +4554,9 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Diri ak Djon Djon', description: 'Rice cooked in the dark broth of endemic Haitian black mushrooms (djon djon), turning it dramatically black — Haiti\'s most prized and expensive rice dish.' },
       { name: 'Soup Joumou', description: 'Pumpkin and beef soup eaten only on January 1st (Haitian Independence Day) — a dish formerly forbidden to slaves by French colonizers, now a ritual of national freedom.' },
     ],
-    images: [],
+    images: [
+
+    ],
     funFact: 'Haitian Soup Joumou is UNESCO Intangible Cultural Heritage. The soup was formerly reserved for French colonizers — enslaved people were forbidden from eating it. After the Haitian Revolution (1804), the first act of the newly free nation was to eat soup joumou on Independence Day, a tradition maintained unbroken for 220 years.',
   },
 
@@ -4497,7 +4569,9 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Roti and Curry', description: 'Flaky Dhal Puri or Paratha roti served with goat, chicken, or vegetable curry — brought by Indian indentured laborers in the 1800s and now as Guyanese as pepperpot.' },
       { name: 'Cook-Up Rice', description: 'Rice cooked together with black-eyed peas, coconut milk, and meat — Guyana\'s ultimate one-pot comfort food, eaten every Saturday.' },
     ],
-    images: [],
+    images: [
+
+    ],
     funFact: 'Guyana is the only English-speaking country in South America — and its food reflects this unique position at the crossroads of Caribbean, African, Indian, and Amerindian cultures. Cassareep, the cassava-based preservative in pepperpot, allows the pot to be kept warm indefinitely — some Guyanese families claim their pepperpot has been continuously simmering for decades.',
   },
 
@@ -4510,7 +4584,9 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Roti', description: 'Surinamese roti (brought by Javanese and Hindustani immigrants) filled with chicken or potato curry and vegetables — a beloved street food unique to Suriname\'s multicultural table.' },
       { name: 'Bruine Bonen Soep', description: 'Brown bean soup with sweet plantains and salted beef — a Dutch-Creole fusion comfort dish that reflects Suriname\'s colonial history.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1767246466534-6c6852acd2b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxTdXJpbmFtZSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDAxfDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'A lime slice floats in a bubbly drink.' }
+    ],
     funFact: 'Suriname\'s capital Paramaribo is a UNESCO World Heritage city — its historic center blends Dutch colonial architecture with Islamic mosques and Jewish synagogues standing side by side, reflecting the extraordinary religious and cultural diversity that makes Surinamese food unique in the world.',
   },
 
@@ -4523,7 +4599,9 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Hudut', description: 'A Garifuna dish of fish in a rich coconut and plantain broth with mashed green plantains (fufu) — Belize\'s most distinctly African-Caribbean specialty.' },
       { name: 'Conch Fritters', description: 'Deep-fried fritters of conch meat with peppers and spices — the signature snack of Belizean beach bars across the Cayes.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1585544314817-cc81047c5667?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxCZWxpemUlMjBmb29kfGVufDB8fHx8MTc3MjQxODQwMnww&ixlib=rb-4.1.0&q=80&w=1080', alt: 'brown wooden table and chairs near green trees during daytime' }
+    ],
     funFact: 'Belize is home to the Garifuna people — a community of mixed African and Arawak/Carib indigenous ancestry who were exiled from St. Vincent by the British in 1797 and settled on the Central American coast. Their cuisine, language, and music were declared UNESCO Intangible Cultural Heritage in 2001.',
   },
 
@@ -4536,7 +4614,11 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Crack Conch', description: 'Tenderized conch coated in seasoned batter and deep-fried until crispy — the Bahamian version of fried seafood, served with peas and rice.' },
       { name: 'Boil Fish', description: 'Grouper or jack fish boiled with grits, potatoes, and hot peppers — the traditional Bahamian breakfast, sustaining fishing communities for generations.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1675973565640-544adf3d21f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxCYWhhbWFzJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDN8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a man sitting at a table in a restaurant' },
+      { url: 'https://images.unsplash.com/photo-1594805938422-b330ad42a7bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyfHxCYWhhbWFzJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDN8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'red rose on white ceramic plate' },
+      { url: 'https://images.unsplash.com/photo-1594805938839-c581da5d8129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwzfHxCYWhhbWFzJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDN8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'pink roses in clear glass vase on white table' }
+    ],
     funFact: 'The Bahamas is one of the world\'s largest per-capita consumers of conch — the queen conch (Strombus gigas) has been so central to Bahamian life for centuries that its bleached shells form the walls of historic buildings, line garden paths, and are used as informal currency in remote island communities.',
   },
 
@@ -4549,7 +4631,9 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Pelau', description: 'Caramelized chicken or beef cooked together with rice, pigeon peas, and coconut milk — Trinidad\'s ultimate one-pot comfort meal.' },
       { name: 'Roti and Curry', description: 'Large, flaky dhalpuri or paratha roti filled with curried goat, shrimp, or potato — brought by Indian indentured laborers in the 1840s and now equally Trinidadian as Carnival.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1568219999854-2505fa25b097?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxUcmluaWRhZCUyMGFuZCUyMFRvYmFnbyUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA0fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'KFC building beside vehicles parked at the parking lot during day' }
+    ],
     funFact: 'Trinidad\'s doubles are estimated to be eaten by over 100,000 people every morning — despite the country having only 1.4 million residents. Doubles vendors set up before dawn at key intersections across Port of Spain; the fastest vendors can prepare 100+ doubles in an hour during the morning rush.',
   },
 
@@ -4562,7 +4646,33 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Pavlova', description: 'A meringue shell with a crispy exterior and marshmallowy center, topped with whipped cream and fresh kiwifruit — claimed by both New Zealand and Australia as their national dessert.' },
       { name: 'Fish and Chips', description: 'Battered and deep-fried fresh fish (snapper or hoki) with thick-cut chips — New Zealand\'s most popular takeaway meal, eaten on beaches across the country.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1671522636199-3af72349c2e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxOZXclMjBaZWFsYW5kJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a person holding a spoon over a pot of food' },
+      { url: 'https://images.unsplash.com/photo-1677825949359-aaff52b4c79c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyfHxOZXclMjBaZWFsYW5kJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a man holding a plate with a hamburger on it' },
+      { url: 'https://images.unsplash.com/photo-1515164664657-6ba669e028f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwzfHxOZXclMjBaZWFsYW5kJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'baked pastries' },
+      { url: 'https://images.unsplash.com/photo-1707014385358-8ddd46da0fd4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw0fHxOZXclMjBaZWFsYW5kJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a white vase filled with orange and yellow flowers' },
+      { url: 'https://images.unsplash.com/photo-1515037028865-0a2a82603f7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw1fHxOZXclMjBaZWFsYW5kJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'four ice creams on cups' },
+      { url: 'https://images.unsplash.com/photo-1635477832585-850e8b26fba1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw2fHxOZXclMjBaZWFsYW5kJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a three tiered cake sitting on top of a table next to cupcakes' },
+      { url: 'https://images.unsplash.com/photo-1708541112783-f97ece44fea0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw3fHxOZXclMjBaZWFsYW5kJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a seagull standing on a rocky beach next to a body of water' },
+      { url: 'https://images.unsplash.com/photo-1756777943312-ba6876d09283?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw4fHxOZXclMjBaZWFsYW5kJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Fishing nets in a calm river with mountains under cloudy sky' },
+      { url: 'https://images.unsplash.com/photo-1673905764281-37ad667f800e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHw5fHxOZXclMjBaZWFsYW5kJTIwZm9vZHxlbnwwfHx8fDE3NzI0MTg0MDV8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a man riding a motorcycle down a street next to tall buildings' },
+      { url: 'https://images.unsplash.com/photo-1671522636176-b05c298f9963?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxMHx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a plate of dumplings on a wooden table' },
+      { url: 'https://images.unsplash.com/photo-1670404161011-44cc3348ef54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxMXx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a plate of food' },
+      { url: 'https://images.unsplash.com/photo-1719377058431-834b0772861b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxMnx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'A restaurant with blue tables and chairs' },
+      { url: 'https://images.unsplash.com/photo-1600505054830-b2a83f176d1f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxM3x8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'man in black shirt standing near red and yellow plastic container' },
+      { url: 'https://images.unsplash.com/photo-1671522635398-a2443699d32e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxNHx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a plate of food on a wooden table' },
+      { url: 'https://images.unsplash.com/photo-1670404160809-243ee6673d8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxNXx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'plates of food on a table' },
+      { url: 'https://images.unsplash.com/photo-1741737325906-702fcc2e0c47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxNnx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'An inviting restaurant entrance illuminated at night.' },
+      { url: 'https://images.unsplash.com/photo-1741737325974-0464682458e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxN3x8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'A narrow street with lights and buildings.' },
+      { url: 'https://images.unsplash.com/photo-1671522635273-f70d28b00493?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxOHx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a sandwich is sitting in a bowl on a table' },
+      { url: 'https://images.unsplash.com/photo-1670404160679-26a5cd6798e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxOXx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a plate of food' },
+      { url: 'https://images.unsplash.com/photo-1671759545528-210dcff6e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyMHx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a person drizzling something into a glass' },
+      { url: 'https://images.unsplash.com/photo-1592868859049-dfdcd6c07c29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyMXx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'person holding white ceramic bowl with food' },
+      { url: 'https://images.unsplash.com/photo-1572137182823-6be287a1ce8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyMnx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'menus on wall' },
+      { url: 'https://images.unsplash.com/photo-1572137173888-e4bb889bd552?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyM3x8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a basket of food sitting on top of a counter' },
+      { url: 'https://images.unsplash.com/photo-1670710029008-30c38b1f9de5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyNHx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'two plates of food sitting on a table' },
+      { url: 'https://images.unsplash.com/photo-1554798372-9f6d1831bd96?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwyNXx8TmV3JTIwWmVhbGFuZCUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA1fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'selective focus photography of cow' }
+    ],
     funFact: 'New Zealand\'s kiwifruit was originally called "Chinese gooseberry" after its origins in China\'s Yangtze River valley. New Zealand farmers cultivated it from the 1940s and renamed it "kiwifruit" for export in 1959 — today New Zealand produces over 400,000 tonnes annually and dominates global premium kiwifruit markets.',
   },
 
@@ -4575,7 +4685,9 @@ export const countries: Record<string, CountryCuisine> = {
       { name: 'Sago Pancakes', description: 'Flat cakes made from sago starch (extracted from the sago palm) cooked on a griddle — the staple food of PNG\'s lowland and island communities.' },
       { name: 'Kaukau', description: 'Sweet potato, often the sole carbohydrate of Highland communities — baked, boiled, or roasted, and eaten multiple times daily by much of the PNG highland population.' },
     ],
-    images: [],
+    images: [
+      { url: 'https://images.unsplash.com/photo-1691009189736-07806d0fd92d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4ODU2NjJ8MHwxfHNlYXJjaHwxfHxQYXB1YSUyME5ldyUyMEd1aW5lYSUyMGZvb2R8ZW58MHx8fHwxNzcyNDE4NDA2fDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'a close up view of a green plant' }
+    ],
     funFact: 'Papua New Guinea has the world\'s highest linguistic diversity — over 800 languages spoken by a population of under 10 million people, representing roughly 12% of all human languages. This linguistic diversity reflects a corresponding diversity in food culture: crops, cooking methods, and feast traditions vary dramatically from valley to valley.',
   },
 
