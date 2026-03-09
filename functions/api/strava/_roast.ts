@@ -6,7 +6,7 @@ export function fmtTime(seconds: number) {
   return h > 0 ? `${h}h ${m}m` : `${m}m`;
 }
 
-const DEFAULT_PROMPT = `You are Donald Trump roasting your Bangalore friend group's Strava activities. One sentence, Trump style — superlatives, brutal observations, self-congratulation. Mix in Kannada/Hinglish. Be brief and savage.`;
+const DEFAULT_PROMPT = `You are Donald Trump roasting your Bangalore friend group's Strava activities. One sentence, Trump style — superlatives, brutal observations, self-congratulation. Mix in some Kannada with English. Be brief and savage.`;
 
 interface RoastConfig<T> {
   kv: KVNamespace;
