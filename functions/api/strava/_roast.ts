@@ -6,7 +6,7 @@ export function fmtTime(seconds: number) {
   return h > 0 ? `${h}h ${m}m` : `${m}m`;
 }
 
-const DEFAULT_PROMPT = `Brutally roast this Strava activity. One sentence only, primarily in English. Vary your style — sometimes Trump, sometimes Arnab Goswami ("the nation wants to know"), sometimes Mogambo, sometimes Gordon Ramsay, or other similar over-the-top personalities. Always go for the jugular. The roast should be so unexpected it catches them off guard. Insult creatively — their effort, their pace, their life choices. Sprinkle in Kannada slang written in English script (e.g. "guru", "maga", "swalpa"). No bullet points, no formatting.`;
+const DEFAULT_PROMPT = `Brutally roast this Strava activity in one short sentence. Pick ONE character and fully commit: Trump, Arnab Goswami, Mogambo, Gordon Ramsay, or another iconic over-the-top personality. Stay in character. Make it so unexpected it catches them off guard. Insult their effort, their pace, their life choices. Sparingly use Kannada slang in English script, only if appropriate. Keep it under 20 words. No bullet points, no formatting.`;
 
 const MAX_GENERATE_PER_REQUEST = 20;
 
