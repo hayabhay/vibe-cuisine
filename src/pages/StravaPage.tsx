@@ -68,24 +68,26 @@ export default function StravaPage() {
   const [visibleCount, setVisibleCount] = useState(20);
   const [athletes, setAthletes] = useState<Athlete[]>([]);
   const [roasts, setRoasts] = useState<Record<string, string>>({});
+  const [nicks, setNicks] = useState<Record<string, string>>({});
   const [metric, setMetric] = useState<Metric>('distance');
 
   const [loading, setLoading] = useState(true);
 
+  const nick = (firstname: string) => nicks[firstname] ?? firstname;
+
   useEffect(() => {
-    // Fetch everything on load. The roast endpoints are smart — they only call
-    // Llama for activities/athletes missing from KV cache. If all roasts exist
-    // in KV already, it's just a cache read, no AI triggered.
     Promise.allSettled([
       fetch('/api/strava/activities').then(r => r.json()) as Promise<Activity[]>,
       fetch('/api/strava/athletes').then(r => r.json()) as Promise<Athlete[]>,
       fetch('/api/strava/activity-roasts').then(r => r.json()) as Promise<Record<string, string>>,
       fetch('/api/strava/athlete-roasts').then(r => r.json()) as Promise<Record<string, string>>,
-    ]).then(([acts, aths, actRoastRes, athleteRoastRes]) => {
+      fetch('/api/strava/nicknames').then(r => r.json()) as Promise<Record<string, string>>,
+    ]).then(([acts, aths, actRoastRes, athleteRoastRes, nicksRes]) => {
       if (acts.status === 'fulfilled') setActivities(acts.value);
       if (aths.status === 'fulfilled') setAthletes(aths.value);
       if (actRoastRes.status === 'fulfilled') setActivityRoasts(actRoastRes.value);
       if (athleteRoastRes.status === 'fulfilled') setRoasts(athleteRoastRes.value);
+      if (nicksRes.status === 'fulfilled') setNicks(nicksRes.value);
       setLoading(false);
     });
   }, []);
@@ -139,7 +141,7 @@ export default function StravaPage() {
                     <div key={activity.id} className="flex gap-4">
                       {/* Avatar */}
                       {activity.profile ? (
-                        <img src={activity.profile} alt={activity.firstname}
+                        <img src={activity.profile} alt={nick(activity.firstname)}
                           className="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-zinc-100 dark:ring-white/10 mt-0.5" />
                       ) : (
                         <div className="w-10 h-10 rounded-full shrink-0 bg-zinc-100 dark:bg-white/5 mt-0.5" />
@@ -148,7 +150,7 @@ export default function StravaPage() {
                       {/* Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-baseline justify-between gap-2 mb-1">
-                          <span className="font-mono font-bold text-sm">{activity.firstname} {activity.lastname[0]}.</span>
+                          <span className="font-mono font-bold text-sm">{nick(activity.firstname)}</span>
                           <span className="font-mono text-xs text-zinc-400 dark:text-white/30 shrink-0">{activity.sport_type}</span>
                         </div>
                         <p className="font-mono text-base font-semibold mb-1">{activity.name}</p>
@@ -214,7 +216,7 @@ export default function StravaPage() {
                   return (
                     <div key={athlete.id} className="flex gap-4">
                       <div className="relative shrink-0">
-                        <img src={athlete.profile} alt={athlete.firstname}
+                        <img src={athlete.profile} alt={nick(athlete.firstname)}
                           className="w-12 h-12 rounded-full object-cover ring-2 ring-zinc-100 dark:ring-white/10" />
                         {i < 3 && (
                           <span className="absolute -bottom-1 -right-1 text-sm leading-none">{MEDALS[i]}</span>
@@ -223,7 +225,7 @@ export default function StravaPage() {
 
                       <div className="flex-1 min-w-0">
                         <div className="flex items-baseline justify-between mb-1.5">
-                          <span className="font-mono font-bold text-base">{athlete.firstname} {athlete.lastname[0]}.</span>
+                          <span className="font-mono font-bold text-base">{nick(athlete.firstname)}</span>
                           <span className="font-mono text-base font-semibold text-zinc-700 dark:text-white/70 ml-2 shrink-0">
                             {fmtMetric(val, metric)}
                           </span>

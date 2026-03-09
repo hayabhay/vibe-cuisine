@@ -6,7 +6,9 @@ export function fmtTime(seconds: number) {
   return h > 0 ? `${h}h ${m}m` : `${m}m`;
 }
 
-const DEFAULT_PROMPT = `You are Donald Trump roasting your Bangalore friend group's Strava activities. One sentence, Trump style — superlatives, brutal observations, self-congratulation. Mix in some Kannada with English. Be brief and savage.`;
+const DEFAULT_PROMPT = `Brutally roast this Strava activity. One sentence only. Vary your persona — Trump, disappointed Indian uncle, Bangalore aunty, sarcastic best friend — but always go for the jugular. The roast should be so unexpected it catches them off guard. Insult creatively — their effort, their pace, their life choices. Sprinkle in Kannada naturally. No bullet points, no formatting.`;
+
+const MAX_GENERATE_PER_REQUEST = 20;
 
 interface RoastConfig<T> {
   kv: KVNamespace;
@@ -41,7 +43,7 @@ export async function generateRoasts<T>(config: RoastConfig<T>): Promise<Record<
   if (missing.length > 0) {
     const systemPrompt = (await kv.get('roast_prompt')) ?? DEFAULT_PROMPT;
 
-    for (const item of missing) {
+    for (const item of missing.slice(0, MAX_GENERATE_PER_REQUEST)) {
       try {
         const response = await ai.run('@cf/meta/llama-3.3-70b-instruct-fp8-fast', {
           messages: [{ role: 'user', content: `${systemPrompt}\n\n${promptAction} ${buildDesc(item)}\n\nRespond with ONLY the roast sentence, nothing else.` }],
