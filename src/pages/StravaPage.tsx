@@ -3,20 +3,6 @@ import { Link } from 'react-router-dom';
 import { House, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
 
-function lsGet<T>(key: string): T | null {
-  try {
-    const raw = localStorage.getItem(key);
-    if (!raw) return null;
-    return JSON.parse(raw) as T;
-  } catch { return null; }
-}
-
-function lsSet(key: string, data: unknown) {
-  try { localStorage.setItem(key, JSON.stringify(data)); } catch {}
-}
-
-// Clean up stale cache keys from previous approaches
-try { ['sv_activities_v2', 'sv_athletes_v2', 'sv_activity_roasts'].forEach(k => localStorage.removeItem(k)); } catch {}
 
 interface Totals {
   distance: number;
@@ -78,14 +64,10 @@ export default function StravaPage() {
   const [tab, setTab] = useState<Tab>('feed');
 
   const [activities, setActivities] = useState<Activity[]>([]);
-  const [activityRoasts, setActivityRoasts] = useState<Record<string, string>>(
-    () => lsGet<Record<string, string>>('sv_act_roasts') ?? {}
-  );
+  const [activityRoasts, setActivityRoasts] = useState<Record<string, string>>({});
   const [visibleCount, setVisibleCount] = useState(20);
   const [athletes, setAthletes] = useState<Athlete[]>([]);
-  const [roasts, setRoasts] = useState<Record<string, string>>(
-    () => lsGet<Record<string, string>>('sv_board_roasts') ?? {}
-  );
+  const [roasts, setRoasts] = useState<Record<string, string>>({});
   const [metric, setMetric] = useState<Metric>('distance');
 
   const [loading, setLoading] = useState(true);
@@ -95,37 +77,15 @@ export default function StravaPage() {
     // Llama for activities/athletes missing from KV cache. If all roasts exist
     // in KV already, it's just a cache read, no AI triggered.
     Promise.allSettled([
-      fetch('/api/strava/activities').then(r => r.json()),
-      fetch('/api/strava/athletes').then(r => r.json()),
-      fetch('/api/strava/activity-roasts').then(r => r.json()),
-      fetch('/api/strava/roast').then(r => r.json()),
-    ]).then(([acts, aths, actRoastRes, boardRoastRes]) => {
-      if (acts.status === 'fulfilled' && Array.isArray(acts.value)) {
-        setActivities(acts.value);
-      }
-      if (aths.status === 'fulfilled' && Array.isArray(aths.value)) {
-        setAthletes(aths.value);
-      }
-      if (actRoastRes.status === 'fulfilled' && actRoastRes.value) {
-        const r = (actRoastRes.value as { roasts: Record<string, string> }).roasts ?? {};
-        if (Object.keys(r).length > 0) {
-          setActivityRoasts(prev => {
-            const merged = { ...prev, ...r };
-            lsSet('sv_act_roasts', merged);
-            return merged;
-          });
-        }
-      }
-      if (boardRoastRes.status === 'fulfilled' && boardRoastRes.value) {
-        const r = (boardRoastRes.value as { roasts: Record<string, string> }).roasts ?? {};
-        if (Object.keys(r).length > 0) {
-          setRoasts(prev => {
-            const merged = { ...prev, ...r };
-            lsSet('sv_board_roasts', merged);
-            return merged;
-          });
-        }
-      }
+      fetch('/api/strava/activities').then(r => r.json()) as Promise<Activity[]>,
+      fetch('/api/strava/athletes').then(r => r.json()) as Promise<Athlete[]>,
+      fetch('/api/strava/activity-roasts').then(r => r.json()) as Promise<Record<string, string>>,
+      fetch('/api/strava/athlete-roasts').then(r => r.json()) as Promise<Record<string, string>>,
+    ]).then(([acts, aths, actRoastRes, athleteRoastRes]) => {
+      if (acts.status === 'fulfilled') setActivities(acts.value);
+      if (aths.status === 'fulfilled') setAthletes(aths.value);
+      if (actRoastRes.status === 'fulfilled') setActivityRoasts(actRoastRes.value);
+      if (athleteRoastRes.status === 'fulfilled') setRoasts(athleteRoastRes.value);
       setLoading(false);
     });
   }, []);

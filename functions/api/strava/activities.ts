@@ -1,9 +1,6 @@
-interface Env {
-  STRAVA_KV: KVNamespace;
-}
+import type { Env } from './_types';
 
 export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
-  const stored = await env.STRAVA_KV.get('club_activities', 'json') as { activities: unknown[] } | null;
-  if (!stored) return Response.json([]);
-  return Response.json(stored.activities, { headers: { 'Cache-Control': 'no-store' } });
+  const activities = await env.STRAVA_KV.get('activities', 'json') as unknown[] | null;
+  return Response.json(activities ?? [], { headers: { 'Cache-Control': 'no-store' } });
 };

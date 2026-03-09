@@ -2,7 +2,7 @@
 /**
  * Syncs Strava club data to Cloudflare KV.
  * Reads stored OAuth token, refreshes if needed, then pulls club members +
- * activities and writes club_scraped + club_activities KV keys.
+ * activities and writes athletes + activities KV keys.
  *
  * Required env vars:
  *   STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET
@@ -110,8 +110,6 @@ for (let page = 1; page <= 3; page++) {
 }
 console.log(`Fetched ${allActivities.length} activities total.`);
 
-const now = Date.now();
-
 // ── Build activity lookup map (firstname|lastInitial → activities) ────────────
 
 const actsByMember = new Map();
@@ -151,8 +149,8 @@ const athletes = members.map(member => {
   };
 });
 
-await kvPut('club_scraped', { scraped_at: now, athletes });
-console.log(`✓ Wrote ${athletes.length} athletes to club_scraped KV.`);
+await kvPut('athletes', athletes);
+console.log(`✓ Wrote ${athletes.length} athletes to KV.`);
 athletes.forEach(a => console.log(`  ${a.firstname} ${a.lastname}: ${a.recent_km}km, ${a.activity_count} activities`));
 
 // ── Build activity feed ──────────────────────────────────────────────────────
@@ -177,6 +175,6 @@ const recentActivities = allActivities.map(a => {
   };
 });
 
-await kvPut('club_activities', { updated_at: now, activities: recentActivities });
-console.log(`✓ Wrote ${recentActivities.length} activities to club_activities KV.`);
+await kvPut('activities', recentActivities);
+console.log(`✓ Wrote ${recentActivities.length} activities to KV.`);
 

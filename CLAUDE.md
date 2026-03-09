@@ -59,25 +59,26 @@ Dark ambient homepage with dual infinite-scrolling polaroid film strips (persona
 - Gallery hidden automatically when `images.length === 0`
 
 ### Strava app (`/strava`)
-- `src/pages/StravaPage.tsx` — activity feed (primary) + leaderboard tabs, localStorage caching
-- `functions/api/strava/_shared.ts` — shared `parseRoasts` helper
-- `functions/api/strava/activities.ts` — returns `club_activities` KV
-- `functions/api/strava/athletes.ts` — returns `club_scraped` KV
-- `functions/api/strava/activity-roasts.ts` — per-activity AI roasts, batched + cached in KV
-- `functions/api/strava/roast.ts` — per-person AI roasts, cached in KV
+- `src/pages/StravaPage.tsx` — activity feed (primary) + leaderboard tabs
+- `functions/api/strava/_types.ts` — shared `Env`, `Activity`, `ScrapedAthlete` interfaces
+- `functions/api/strava/_roast.ts` — shared `generateRoasts` helper (parallel KV read → AI fill → write)
+- `functions/api/strava/activities.ts` — returns `activities` KV (Activity[])
+- `functions/api/strava/athletes.ts` — returns `athletes` KV (Athlete[])
+- `functions/api/strava/activity-roasts.ts` — per-activity AI roasts (Record<string, string>)
+- `functions/api/strava/athlete-roasts.ts` — per-person AI roasts, 24h TTL (Record<string, string>)
 - `scripts/sync-strava-club.mjs` — daily sync: fetches club members + activities, writes KV
 - `.github/workflows/sync-strava.yml` — cron at 6am UTC, runs sync script
 
 **Data flow:** No OAuth connect flow. One account (athlete `199191837`) is pre-authorized.
 GitHub Actions syncs daily using stored tokens + Strava club API (club `1954938`).
-Frontend reads from KV, caches in localStorage with versioned keys.
+Frontend fetches fresh from KV on each load (no localStorage caching).
 
 **KV keys:**
-- `athlete:199191837` — stored OAuth token for the sync account
-- `club_scraped` — `{ scraped_at, athletes[] }` — leaderboard data (stats.totals shape)
-- `club_activities` — `{ updated_at, activities[] }` — full activity list (up to 600)
-- `activity_roasts` — `{ [activityId]: roastString }` — per-activity roast cache
-- `roast_cache` — `{ roasts: { [firstname]: string }, generated_at }` — per-person roast cache
+- `athlete:{id}` — stored OAuth token for the sync account (e.g. `athlete:199191837`)
+- `athletes` — `[...athletes array...]` — leaderboard data (overwritten daily by sync)
+- `activities` — `[...activities array...]` — full activity list (up to 600, overwritten daily)
+- `roast:activity:{activityId}` — plain roast string per activity (immutable)
+- `roast:athlete:{firstname}` — plain roast string per person (24h TTL via KV expiration)
 - `roast_prompt` — optional custom system prompt (shared by both roast endpoints)
 
 **Cloudflare bindings required** (set in Pages project settings):
@@ -103,9 +104,8 @@ LOCAL=1 STRAVA_CLUB_ID=1954938 STRAVA_ATHLETE_ID=199191837 node scripts/sync-str
 STRAVA_CLUB_ID=1954938 STRAVA_ATHLETE_ID=199191837 node scripts/sync-strava-club.mjs
 # Set a custom roast prompt
 npx wrangler kv key put --remote --namespace-id=b3039d030a994346bb7b165dcbd86140 roast_prompt "your prompt"
-# Force-clear roast caches
-npx wrangler kv key delete --remote --namespace-id=b3039d030a994346bb7b165dcbd86140 roast_cache
-npx wrangler kv key delete --remote --namespace-id=b3039d030a994346bb7b165dcbd86140 activity_roasts
+# List roast keys (activity and athlete roasts are individual keys)
+npx wrangler kv key list --remote --namespace-id=b3039d030a994346bb7b165dcbd86140 --prefix=roast:
 # List all KV keys
 npx wrangler kv key list --remote --namespace-id=b3039d030a994346bb7b165dcbd86140
 ```
@@ -120,7 +120,6 @@ npx wrangler kv key list --remote --namespace-id=b3039d030a994346bb7b165dcbd8614
 **Wrangler gotchas:**
 - `wrangler pages dev` does NOT support `--remote` flag (v4) — local KV is always a simulation
 - `wrangler kv key get/put` without `--remote` targets local simulation, not production — always pass `--remote` for prod
-- localStorage cache keys must be versioned (e.g. `sv_athletes_v2`) when data shape changes — stale cache causes runtime crashes
 
 ### Deployment
 - Cloudflare Pages: build command `pnpm build`, output dir `dist`, install command `pnpm install`
