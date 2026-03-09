@@ -3,21 +3,20 @@ import { Link } from 'react-router-dom';
 import { House, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
 
-const ONE_HOUR = 60 * 60 * 1000;
-
-function lsGet<T>(key: string, ttl?: number): T | null {
+function lsGet<T>(key: string): T | null {
   try {
     const raw = localStorage.getItem(key);
     if (!raw) return null;
-    const { data, ts } = JSON.parse(raw);
-    if (ttl && Date.now() - ts > ttl) return null;
-    return data as T;
+    return JSON.parse(raw) as T;
   } catch { return null; }
 }
 
 function lsSet(key: string, data: unknown) {
-  try { localStorage.setItem(key, JSON.stringify({ data, ts: Date.now() })); } catch {}
+  try { localStorage.setItem(key, JSON.stringify(data)); } catch {}
 }
+
+// Clean up stale cache keys from previous approaches
+try { ['sv_activities_v2', 'sv_athletes_v2', 'sv_activity_roasts'].forEach(k => localStorage.removeItem(k)); } catch {}
 
 interface Totals {
   distance: number;
@@ -79,76 +78,61 @@ export default function StravaPage() {
   const [tab, setTab] = useState<Tab>('feed');
 
   const [activities, setActivities] = useState<Activity[]>([]);
-  const [activityRoasts, setActivityRoasts] = useState<Record<string, string>>({});
+  const [activityRoasts, setActivityRoasts] = useState<Record<string, string>>(
+    () => lsGet<Record<string, string>>('sv_act_roasts') ?? {}
+  );
   const [visibleCount, setVisibleCount] = useState(20);
   const [athletes, setAthletes] = useState<Athlete[]>([]);
-  const [roasts, setRoasts] = useState<Record<string, string>>({});
-  const [metric, setMetric] = useState<Metric>('distance');
-  const [roasting, setRoasting] = useState<'feed' | 'board' | null>(null);
-  const [loading, setLoading] = useState(() =>
-    !lsGet('sv_activities_v2') || !lsGet('sv_athletes_v2')
+  const [roasts, setRoasts] = useState<Record<string, string>>(
+    () => lsGet<Record<string, string>>('sv_board_roasts') ?? {}
   );
+  const [metric, setMetric] = useState<Metric>('distance');
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const cached = {
-      activities:   lsGet<Activity[]>('sv_activities_v2', ONE_HOUR),
-      athletes:     lsGet<Athlete[]>('sv_athletes_v2', ONE_HOUR),
-      actRoasts:    lsGet<Record<string, string>>('sv_activity_roasts'),
-      boardRoasts:  lsGet<Record<string, string>>('sv_board_roasts'),
-    };
-
-    if (cached.activities)  setActivities(cached.activities);
-    if (cached.athletes)    setAthletes(cached.athletes);
-    if (cached.actRoasts)   setActivityRoasts(cached.actRoasts);
-    if (cached.boardRoasts) setRoasts(cached.boardRoasts);
-
-    const toFetch = [
-      !cached.activities  && fetch('/api/strava/activities').then(r => r.json()),
-      !cached.athletes    && fetch('/api/strava/athletes').then(r => r.json()),
-      !cached.actRoasts   && fetch('/api/strava/activity-roasts').then(r => r.json()),
-      !cached.boardRoasts && fetch('/api/strava/roast').then(r => r.json()),
-    ].filter(Boolean) as Promise<unknown>[];
-
-    if (toFetch.length === 0) { setLoading(false); return; }
-
+    // Fetch everything on load. The roast endpoints are smart — they only call
+    // Llama for activities/athletes missing from KV cache. If all roasts exist
+    // in KV already, it's just a cache read, no AI triggered.
     Promise.allSettled([
-      !cached.activities  ? toFetch.shift()! : Promise.resolve(null),
-      !cached.athletes    ? toFetch.shift()! : Promise.resolve(null),
-      !cached.actRoasts   ? toFetch.shift()! : Promise.resolve(null),
-      !cached.boardRoasts ? toFetch.shift()! : Promise.resolve(null),
-    ]).then(([acts, aths, actRoasts, boardRoasts]) => {
-      if (acts.status === 'fulfilled' && acts.value) {
-        setActivities(acts.value as Activity[]); lsSet('sv_activities_v2', acts.value);
+      fetch('/api/strava/activities').then(r => r.json()),
+      fetch('/api/strava/athletes').then(r => r.json()),
+      fetch('/api/strava/activity-roasts').then(r => r.json()),
+      fetch('/api/strava/roast').then(r => r.json()),
+    ]).then(([acts, aths, actRoastRes, boardRoastRes]) => {
+      if (acts.status === 'fulfilled' && Array.isArray(acts.value)) {
+        setActivities(acts.value);
       }
-      if (aths.status === 'fulfilled' && aths.value) {
-        setAthletes(aths.value as Athlete[]); lsSet('sv_athletes_v2', aths.value);
+      if (aths.status === 'fulfilled' && Array.isArray(aths.value)) {
+        setAthletes(aths.value);
       }
-      if (actRoasts.status === 'fulfilled' && actRoasts.value) {
-        const r = (actRoasts.value as { roasts: Record<string, string> }).roasts ?? {};
-        setActivityRoasts(r);
-        if (Object.keys(r).length > 0) lsSet('sv_activity_roasts', r);
+      if (actRoastRes.status === 'fulfilled' && actRoastRes.value) {
+        const r = (actRoastRes.value as { roasts: Record<string, string> }).roasts ?? {};
+        if (Object.keys(r).length > 0) {
+          setActivityRoasts(prev => {
+            const merged = { ...prev, ...r };
+            lsSet('sv_act_roasts', merged);
+            return merged;
+          });
+        }
       }
-      if (boardRoasts.status === 'fulfilled' && boardRoasts.value) {
-        const r = (boardRoasts.value as { roasts: Record<string, string> }).roasts ?? {};
-        setRoasts(r);
-        if (Object.keys(r).length > 0) lsSet('sv_board_roasts', r);
+      if (boardRoastRes.status === 'fulfilled' && boardRoastRes.value) {
+        const r = (boardRoastRes.value as { roasts: Record<string, string> }).roasts ?? {};
+        if (Object.keys(r).length > 0) {
+          setRoasts(prev => {
+            const merged = { ...prev, ...r };
+            lsSet('sv_board_roasts', merged);
+            return merged;
+          });
+        }
       }
       setLoading(false);
     });
   }, []);
 
-  async function refreshRoasts(kind: 'feed' | 'board') {
-    setRoasting(kind);
-    const endpoint = kind === 'feed' ? 'activity-roasts' : 'roast';
-    const cacheKey = kind === 'feed' ? 'sv_activity_roasts' : 'sv_board_roasts';
-    const { roasts: r = {} } = await fetch(`/api/strava/${endpoint}?force=1`).then(res => res.json()) as { roasts: Record<string, string> };
-    if (kind === 'feed') setActivityRoasts(r); else setRoasts(r);
-    lsSet(cacheKey, r);
-    setRoasting(null);
-  }
 
-  const sorted = [...athletes].sort((a, b) => metricVal(b.stats.totals, metric) - metricVal(a.stats.totals, metric));
-  const max = sorted[0] ? metricVal(sorted[0].stats.totals, metric) : 1;
+  const sorted = [...athletes].sort((a, b) => metricVal(b.stats?.totals, metric) - metricVal(a.stats?.totals, metric));
+  const max = sorted[0] ? metricVal(sorted[0].stats?.totals, metric) : 1;
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#0a0a0a] text-zinc-900 dark:text-white flex flex-col transition-colors">
@@ -236,12 +220,6 @@ export default function StravaPage() {
                   </button>
                 )}
 
-                <div className="flex justify-end pt-2 border-t border-zinc-100 dark:border-white/5">
-                  <button onClick={() => refreshRoasts('feed')} disabled={roasting === 'feed'}
-                    className="font-mono text-xs text-zinc-300 dark:text-white/20 hover:text-zinc-500 dark:hover:text-white/40 transition-colors disabled:opacity-30">
-                    {roasting === 'feed' ? 'roasting...' : '↺ new roasts'}
-                  </button>
-                </div>
               </>
             )}
           </div>
@@ -269,7 +247,7 @@ export default function StravaPage() {
             ) : (
               <>
                 {sorted.map((athlete, i) => {
-                  const val = metricVal(athlete.stats.totals, metric);
+                  const val = metricVal(athlete.stats?.totals, metric);
                   const pct = max > 0 ? (val / max) * 100 : 0;
                   const roast = roasts[athlete.firstname];
 
@@ -306,12 +284,6 @@ export default function StravaPage() {
                   );
                 })}
 
-                <div className="flex justify-end pt-2 border-t border-zinc-100 dark:border-white/5">
-                  <button onClick={() => refreshRoasts('board')} disabled={roasting === 'board'}
-                    className="font-mono text-xs text-zinc-300 dark:text-white/20 hover:text-zinc-500 dark:hover:text-white/40 transition-colors disabled:opacity-30">
-                    {roasting === 'board' ? 'roasting...' : '↺ new roasts'}
-                  </button>
-                </div>
               </>
             )}
           </div>
