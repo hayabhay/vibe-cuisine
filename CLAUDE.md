@@ -82,6 +82,7 @@ Dark ambient homepage with dual infinite-scrolling polaroid film strips (persona
 - `pnpm build && pnpm pages:dev` — builds frontend then serves via wrangler on localhost:8788
 - `.env.local` must have `STRAVA_CLIENT_ID` and `STRAVA_CLIENT_SECRET`
 - OAuth callback goes to prod (`slum-vibes.abhay.fyi`) — test OAuth on deployed site, everything else locally
+- To give a collaborator Cloudflare access without full account access: dash.cloudflare.com → My Profile → API Tokens → Create Token → use "Edit Cloudflare Workers" template. They add `CLOUDFLARE_API_TOKEN=xxx` to their `.env.local`
 
 **Useful KV commands:**
 ```bash
