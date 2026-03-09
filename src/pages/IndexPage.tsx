@@ -11,7 +11,7 @@ const apps = [
   },
   {
     slug: 'strava',
-    name: 'strava wars',
+    name: 'strava shata',
     description: 'Who among us is actually moving.',
     emoji: '🏃',
   },
