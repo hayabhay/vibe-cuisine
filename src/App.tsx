@@ -32,7 +32,7 @@ export default function App() {
   return (
     <div className="h-screen bg-background overflow-hidden flex">
       <div className="flex-1 flex flex-col overflow-hidden min-w-0">
-        <Header onToggleSidebar={() => setSidebarOpen((o) => !o)} isDark={isDark} onToggleTheme={toggle} />
+        <Header onToggleSidebar={() => setSidebarOpen((o) => !o)} />
 
         <main
           ref={containerRef}
@@ -70,6 +70,8 @@ export default function App() {
         isOpen={sidebarOpen}
         onCountryClick={handleSidebarCountryClick}
         onClose={() => setSidebarOpen(false)}
+        isDark={isDark}
+        onToggleTheme={toggle}
       />
 
       <AnimatePresence>

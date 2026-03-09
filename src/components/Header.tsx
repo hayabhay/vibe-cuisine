@@ -1,26 +1,23 @@
-import { PanelLeft, Sun, Moon } from 'lucide-react';
+import { PanelRight, House } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 interface HeaderProps {
   onToggleSidebar: () => void;
-  isDark: boolean;
-  onToggleTheme: () => void;
 }
 
-export default function Header({ onToggleSidebar, isDark, onToggleTheme }: HeaderProps) {
+export default function Header({ onToggleSidebar }: HeaderProps) {
   return (
     <header className="relative px-4 py-3 shrink-0" style={{ backgroundColor: 'var(--ocean)' }}>
       <div className="absolute top-2 left-3">
-        <Button variant="ghost" size="icon" className="w-10 h-10 2xl:w-12 2xl:h-12 [&_svg]:size-auto" onClick={onToggleSidebar} aria-label="Toggle sidebar">
-          <PanelLeft className="w-8 h-8 2xl:w-10 2xl:h-10" />
+        <Button variant="ghost" size="icon" className="w-10 h-10 2xl:w-12 2xl:h-12 [&_svg]:size-auto" asChild aria-label="Go home">
+          <Link to="/"><House className="w-8 h-8 2xl:w-10 2xl:h-10" /></Link>
         </Button>
       </div>
 
       <div className="absolute top-2 right-3">
-        <Button variant="ghost" size="icon" className="w-10 h-10 2xl:w-12 2xl:h-12 [&_svg]:size-auto" onClick={onToggleTheme} aria-label="Toggle theme">
-          {isDark
-            ? <Sun className="w-8 h-8 2xl:w-10 2xl:h-10" />
-            : <Moon className="w-8 h-8 2xl:w-10 2xl:h-10" />}
+        <Button variant="ghost" size="icon" className="w-10 h-10 2xl:w-12 2xl:h-12 [&_svg]:size-auto" onClick={onToggleSidebar} aria-label="Toggle sidebar">
+          <PanelRight className="w-8 h-8 2xl:w-10 2xl:h-10" />
         </Button>
       </div>
 

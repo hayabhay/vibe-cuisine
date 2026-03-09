@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Search, X } from 'lucide-react';
+import { Search, X, Sun, Moon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
@@ -24,9 +24,11 @@ interface SidebarProps {
   isOpen: boolean;
   onCountryClick: (countryId: string) => void;
   onClose: () => void;
+  isDark: boolean;
+  onToggleTheme: () => void;
 }
 
-export default function Sidebar({ isOpen, onCountryClick, onClose }: SidebarProps) {
+export default function Sidebar({ isOpen, onCountryClick, onClose, isDark, onToggleTheme }: SidebarProps) {
   const [query, setQuery] = useState('');
 
   const results = useMemo(() => {
@@ -46,18 +48,21 @@ export default function Sidebar({ isOpen, onCountryClick, onClose }: SidebarProp
   return (
     <aside
       className={cn(
-        'fixed left-0 inset-y-0 z-40',
+        'fixed right-0 inset-y-0 z-40',
         'flex flex-col shrink-0 overflow-hidden',
-        'bg-background border-r border-border',
+        'bg-background border-l border-border',
         'transition-transform duration-300 ease-in-out',
         'w-64 2xl:w-80',
-        isOpen ? 'translate-x-0' : '-translate-x-full',
+        isOpen ? 'translate-x-0' : 'translate-x-full',
       )}
     >
-      {/* Close button */}
-      <div className="flex justify-start px-3 pt-3 shrink-0">
+      {/* Close + theme toggle */}
+      <div className="flex justify-between px-3 pt-3 shrink-0">
         <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close sidebar">
           <X className="w-5 h-5 2xl:w-6 2xl:h-6" />
+        </Button>
+        <Button variant="ghost" size="icon" onClick={onToggleTheme} aria-label="Toggle theme">
+          {isDark ? <Sun className="w-5 h-5 2xl:w-6 2xl:h-6" /> : <Moon className="w-5 h-5 2xl:w-6 2xl:h-6" />}
         </Button>
       </div>
 
