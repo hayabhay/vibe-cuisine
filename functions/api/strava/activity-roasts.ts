@@ -15,7 +15,12 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
     getKey: a => a.id,
     buildDesc: a => {
       const name = nicks[a.firstname] ?? a.firstname;
-      return `${name} did "${a.name}" (${a.sport_type}), distance: ${fmt(a.distance)}, time: ${fmtTime(a.moving_time)}, elevation: ${Math.round(a.elevation_gain)}m`;
+      const stats = [
+        a.distance > 0 && fmt(a.distance),
+        a.moving_time > 0 && fmtTime(a.moving_time),
+        a.elevation_gain > 0 && `${Math.round(a.elevation_gain)}m elevation`,
+      ].filter(Boolean).join(', ');
+      return `${name} did "${a.name}" (${a.sport_type})${stats ? `, ${stats}` : ''}`;
     },
     promptAction: 'Roast this activity:',
   });
