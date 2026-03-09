@@ -85,13 +85,13 @@ export default function StravaPage() {
   const [metric, setMetric] = useState<Metric>('distance');
   const [roasting, setRoasting] = useState<'feed' | 'board' | null>(null);
   const [loading, setLoading] = useState(() =>
-    !lsGet('sv_activities') || !lsGet('sv_athletes')
+    !lsGet('sv_activities_v2') || !lsGet('sv_athletes_v2')
   );
 
   useEffect(() => {
     const cached = {
-      activities:   lsGet<Activity[]>('sv_activities', ONE_HOUR),
-      athletes:     lsGet<Athlete[]>('sv_athletes', ONE_HOUR),
+      activities:   lsGet<Activity[]>('sv_activities_v2', ONE_HOUR),
+      athletes:     lsGet<Athlete[]>('sv_athletes_v2', ONE_HOUR),
       actRoasts:    lsGet<Record<string, string>>('sv_activity_roasts'),
       boardRoasts:  lsGet<Record<string, string>>('sv_board_roasts'),
     };
@@ -117,10 +117,10 @@ export default function StravaPage() {
       !cached.boardRoasts ? toFetch.shift()! : Promise.resolve(null),
     ]).then(([acts, aths, actRoasts, boardRoasts]) => {
       if (acts.status === 'fulfilled' && acts.value) {
-        setActivities(acts.value as Activity[]); lsSet('sv_activities', acts.value);
+        setActivities(acts.value as Activity[]); lsSet('sv_activities_v2', acts.value);
       }
       if (aths.status === 'fulfilled' && aths.value) {
-        setAthletes(aths.value as Athlete[]); lsSet('sv_athletes', aths.value);
+        setAthletes(aths.value as Athlete[]); lsSet('sv_athletes_v2', aths.value);
       }
       if (actRoasts.status === 'fulfilled' && actRoasts.value) {
         const r = (actRoasts.value as { roasts: Record<string, string> }).roasts ?? {};
