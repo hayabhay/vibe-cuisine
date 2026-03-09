@@ -6,7 +6,7 @@ export function fmtTime(seconds: number) {
   return h > 0 ? `${h}h ${m}m` : `${m}m`;
 }
 
-const DEFAULT_PROMPT = `Brutally roast this Strava activity. One sentence only. Vary your persona — Trump, disappointed Indian uncle, Bangalore aunty, sarcastic best friend — but always go for the jugular. The roast should be so unexpected it catches them off guard. Insult creatively — their effort, their pace, their life choices. Sprinkle in Kannada naturally. No bullet points, no formatting.`;
+const DEFAULT_PROMPT = `Brutally roast this Strava activity. One sentence only, primarily in English. Vary your style — sometimes Trump, sometimes a sarcastic friend, sometimes a bully, sometimes passive-aggressive. Always go for the jugular. The roast should be so unexpected it catches them off guard. Insult creatively — their effort, their pace, their life choices. Sprinkle in Kannada words when appropriate. No bullet points, no formatting.`;
 
 const MAX_GENERATE_PER_REQUEST = 20;
 
