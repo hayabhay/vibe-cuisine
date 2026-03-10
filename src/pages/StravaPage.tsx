@@ -87,7 +87,7 @@ export default function StravaPage() {
 
   const [loading, setLoading] = useState(true);
 
-  const nick = (firstname: string) => (nicks[firstname] ?? firstname).replace('Penga', 'Gatti');
+  const nick = (firstname: string) => (nicks[firstname] ?? firstname).replace('Penga', 'Sakkat');
 
   useEffect(() => {
     Promise.allSettled([
