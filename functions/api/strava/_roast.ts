@@ -6,23 +6,24 @@ export function fmtTime(seconds: number) {
   return h > 0 ? `${h}h ${m}m` : `${m}m`;
 }
 
-const DEFAULT_PROMPT = `Roast this Strava activity like a savage friend. Be specific — mock the actual distance, time, pace, or activity name. One or two punchy sentences, under 35 words. English only, max one Kannada word if it fits naturally (guru, yeno, illa, beda). No emojis, no hashtags, no formatting.`;
+const DEFAULT_PROMPT = `Roast each of these Strava activities. For each one, fully become a DIFFERENT iconic personality — Trump, The Rock, Arnab Goswami, Stone Cold Steve Austin, Gordon Ramsay, or similar. Use their real catchphrases and speech patterns. Be specific about the distance, time, or pace. 2-3 sentences per roast, no emojis, no formatting. Do not include the character name — just the roast.`;
 
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent';
 const MAX_GENERATE_PER_REQUEST = 5;
+const BATCH_SIZE = 5;
 
 interface RoastConfig<T> {
   kv: KVNamespace;
-  ai: Ai;
+  apiKey: string;
   items: T[];
   keyPrefix: string;
   getKey: (item: T) => string;
   buildDesc: (item: T) => string;
-  promptAction: string;
   putOptions?: KVNamespacePutOptions;
 }
 
 export async function generateRoasts<T>(config: RoastConfig<T>): Promise<Record<string, string>> {
-  const { kv, ai, items, keyPrefix, getKey, buildDesc, promptAction, putOptions } = config;
+  const { kv, apiKey, items, keyPrefix, getKey, buildDesc, putOptions } = config;
 
   const results = await Promise.allSettled(
     items.map(item => kv.get(`${keyPrefix}${getKey(item)}`))
@@ -40,24 +41,40 @@ export async function generateRoasts<T>(config: RoastConfig<T>): Promise<Record<
     }
   }
 
-  if (missing.length > 0) {
-    const systemPrompt = (await kv.get('roast_prompt')) ?? DEFAULT_PROMPT;
+  const toGenerate = missing.slice(0, MAX_GENERATE_PER_REQUEST);
 
-    for (const item of missing.slice(0, MAX_GENERATE_PER_REQUEST)) {
-      try {
-        const response = await ai.run('@cf/meta/llama-3.3-70b-instruct-fp8-fast', {
-          messages: [{ role: 'user', content: `${systemPrompt}\n\n${promptAction} ${buildDesc(item)}\n\nRespond with ONLY the roast sentence, nothing else.` }],
-          max_tokens: 150,
-        }) as { response: string };
+  for (let i = 0; i < toGenerate.length; i += BATCH_SIZE) {
+    const batch = toGenerate.slice(i, i + BATCH_SIZE);
+    try {
+      const prompt = DEFAULT_PROMPT +
+        '\n\nActivities:\n' + batch.map((item, idx) => `${idx + 1}. ${buildDesc(item)}`).join('\n') +
+        `\n\nRespond with exactly ${batch.length} roasts numbered 1-${batch.length}, one per line.`;
 
-        const roast = (response.response ?? '').trim();
+      const response = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { maxOutputTokens: 800 },
+        }),
+      });
+
+      const data = await response.json() as { candidates?: { content: { parts: { text: string }[] } }[] };
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+      const lines = text.split('\n').filter(l => /^\d+\./.test(l.trim()));
+
+      for (let j = 0; j < batch.length; j++) {
+        const line = lines[j];
+        if (!line) continue;
+        const roast = line.replace(/^\d+\.\s*/, '').trim();
         if (roast) {
-          roasts[getKey(item)] = roast;
-          await kv.put(`${keyPrefix}${getKey(item)}`, roast, putOptions);
+          const key = getKey(batch[j]);
+          roasts[key] = roast;
+          await kv.put(`${keyPrefix}${key}`, roast, putOptions);
         }
-      } catch {
-        // skip failed roasts, they'll get picked up next time
       }
+    } catch {
+      // skip failed batches, picked up next time
     }
   }
 

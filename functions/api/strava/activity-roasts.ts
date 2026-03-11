@@ -9,7 +9,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
 
   const roasts = await generateRoasts({
     kv: env.STRAVA_KV,
-    ai: env.AI,
+    apiKey: env.GEMINI_API_KEY,
     items: activities,
     keyPrefix: 'roast:activity:',
     getKey: a => a.id,
@@ -22,7 +22,6 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
       ].filter(Boolean).join(', ');
       return `${name} did "${a.name}" (${a.sport_type})${stats ? `, ${stats}` : ''}`;
     },
-    promptAction: 'Roast this activity:',
   });
 
   return Response.json(roasts);

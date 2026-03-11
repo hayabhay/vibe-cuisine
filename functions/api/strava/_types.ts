@@ -1,6 +1,6 @@
 export interface Env {
   STRAVA_KV: KVNamespace;
-  AI: Ai;
+  GEMINI_API_KEY: string;
 }
 
 export interface Activity {

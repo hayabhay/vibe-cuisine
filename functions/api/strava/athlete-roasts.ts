@@ -9,7 +9,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
 
   const roasts = await generateRoasts({
     kv: env.STRAVA_KV,
-    ai: env.AI,
+    apiKey: env.GEMINI_API_KEY,
     items: athletes,
     keyPrefix: 'roast:athlete:',
     getKey: a => a.firstname,
@@ -17,7 +17,6 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
       const name = nicks[a.firstname] ?? a.firstname;
       return `${name}: ${a.recent_km}km across ${a.activity_count} activities. Recent: ${a.recent_activity_names.join(', ') || 'nothing'}`;
     },
-    promptAction: 'Roast this person:',
     putOptions: { expirationTtl: 86400 },
   });
 

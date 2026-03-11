@@ -92,8 +92,7 @@ Frontend fetches fresh from KV on each load (no localStorage caching).
 
 **Cloudflare bindings required** (set in Pages project settings):
 - KV namespace: `STRAVA_KV` (id: `b3039d030a994346bb7b165dcbd86140`)
-- AI binding: `AI`
-- Env vars: `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`
+- Env vars: `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`, `GEMINI_API_KEY`
 
 **Local dev:**
 - `pnpm dev:full` — vite watch + wrangler pages dev on localhost:8788
@@ -123,9 +122,9 @@ npx wrangler kv key put --remote --namespace-id=b3039d030a994346bb7b165dcbd86140
 npx wrangler kv key list --remote --namespace-id=b3039d030a994346bb7b165dcbd86140
 ```
 
-**AI model:** `@cf/meta/llama-3.3-70b-instruct-fp8-fast` (Cloudflare AI free tier, hits remote even in local dev, 100k tokens/day limit)
+**AI model:** `gemini-2.5-flash-lite` via Google AI Studio (free tier, 1500 req/day). API key stored as `GEMINI_API_KEY` env var in Cloudflare Pages. Get/rotate keys at aistudio.google.com.
 
-**Roast generation:** AI generates roasts for new activities (5 per request, capped to avoid timeout). Roasts can also be hand-written directly to KV — the endpoint only generates for missing keys. Nicknames are passed in the AI prompt description so roasts use them naturally.
+**Roast generation:** Generates roasts in batches of 5 using Gemini, capped at 5 per request to avoid timeout. Each batch uses a single prompt asking for different iconic personalities (Trump, The Rock, Arnab Goswami, Stone Cold, Ramsay etc). Roasts cached indefinitely in KV per activity, 24h TTL per athlete. Endpoint only generates for missing keys. Nicknames passed in descriptions so roasts use them naturally.
 
 **Strava API gotchas:**
 - Club activities (`/clubs/{id}/activities`) return `ClubActivity` — no `start_date`, no athlete ID, lastname truncated to initial (e.g. `"K."`)
