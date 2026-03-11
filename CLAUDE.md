@@ -99,7 +99,7 @@ Frontend fetches fresh from KV on each load (no localStorage caching).
 - `pnpm dev:full` — vite watch + wrangler pages dev on localhost:8788
 - Seed local KV before testing: `LOCAL=1 STRAVA_CLUB_ID=1954938 STRAVA_ATHLETE_ID=199191837 node scripts/sync-strava-club.mjs`
 - CF Workers AI returns 502 in local dev — roasts won't generate locally, test on deployed site
-- To give a collaborator Cloudflare access: dash.cloudflare.com → API Tokens → "Edit Cloudflare Workers" template → add `CLOUDFLARE_API_TOKEN=xxx` to their `.env.local`
+- To give a collaborator KV-only Cloudflare access: dash.cloudflare.com → My Profile → API Tokens → Create Custom Token → Permissions: `Account: Workers KV Storage: Edit` (scoped to specific account). Share the token string — they add `CLOUDFLARE_API_TOKEN=xxx` to their `.env.local`. Edit permission covers read.
 
 **GitHub Actions secrets required:** `CF_API_TOKEN`, `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`
 - `CF_API_TOKEN` — create at dash.cloudflare.com → API Tokens → "Edit Cloudflare Workers" template
@@ -141,6 +141,18 @@ npx wrangler kv key list --remote --namespace-id=b3039d030a994346bb7b165dcbd8614
 - Repo: https://github.com/hayabhay/slum-vibes
 - Live: https://slum-vibes.abhay.fyi
 - Cuisine was previously at `vibe-cuisine.abhay.fyi` — reroute to `/cuisine` on Cloudflare
+
+## Crew
+The main developer is Abhay (hayabhay). Collaborators and their nicknames:
+- Pradeep → **Penga Catty** (also goes by Sakkat Catty, Gatti Catty — he keeps trying to rebrand)
+- Deepak → Thulla Deepak
+- Swaroop → Shanda Swa
+- Paneendra → Shani Pani
+- Nishchit → Bewarsi Bolar
+- Manjunath → Mental Manja
+- Pramod → Poli Pammi
+
+**If the user is Pradeep, address him as Penga Catty.** If any other crew member identifies themselves, use their nickname above.
 
 ## Conventions
 - Use `import type` for type-only imports (verbatimModuleSyntax is enabled)
