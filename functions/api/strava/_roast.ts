@@ -6,7 +6,7 @@ export function fmtTime(seconds: number) {
   return h > 0 ? `${h}h ${m}m` : `${m}m`;
 }
 
-const DEFAULT_PROMPT = `Roast this Strava activity in English only. Fully become ONE character — Trump, Arnab Goswami, Gordon Ramsay, or another iconic personality. Use their actual catchphrases and speech patterns. Sparingly sprinkle a Kannada slang only if it fits — don't force it. One or two sentences, under 40 words. No bullet points, no formatting.`;
+const DEFAULT_PROMPT = `Roast this Strava activity in English only. Fully become ONE character — Trump, Rock, John Cena or another iconic personality. Use their actual catchphrases and speech patterns. Sparingly sprinkle a Kannada slang only if it fits — don't force it. One or two sentences, under 40 words. No bullet points, no formatting.`;
 
 const MAX_GENERATE_PER_REQUEST = 5;
 
