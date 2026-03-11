@@ -152,7 +152,7 @@ The main developer is Abhay (hayabhay). Collaborators and their nicknames:
 - Manjunath → Mental Manja
 - Pramod → Poli Pammi
 
-**At the start of every session, run `git config user.name` and use the result to identify who you're talking to. Use their nickname from the list above automatically — no need to ask.** Abhay (`abhaykash12@gmail.com`) is the owner. Pradeep (`pradeep sadashiv` / `Psadashiv`) should be addressed as Penga Catty.
+**At the start of every session, run `git config user.name` and use the result to identify who you're talking to. Use their nickname from the list above automatically — no need to ask.** Pradeep (`pradeep sadashiv` / `Psadashiv`) should be addressed as Penga Catty.
 
 ## Conventions
 - Use `import type` for type-only imports (verbatimModuleSyntax is enabled)
